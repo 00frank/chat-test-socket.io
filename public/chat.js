@@ -1,3 +1,4 @@
+// if you want support for multiple devices change the "localhost" with your ipv4 and enter by there
 const socket = io("ws://localhost:2006");
 const user = auth(window.localStorage);
 logIn();
