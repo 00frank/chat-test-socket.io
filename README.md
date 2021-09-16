@@ -10,4 +10,4 @@ with other browsers! 📱💻
 
 
 ## Made with:
-![express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=Express&logoColor=white) ![socket.io](https://img.shields.io/badge/-Socket.io-010101?style=flat-square&logo=Socket.io&logoColor=white)
+![nodejs](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=Node.js&logoColor=white) ![express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=Express&logoColor=white) ![socket.io](https://img.shields.io/badge/-Socket.io-010101?style=flat-square&logo=Socket.io&logoColor=white)
