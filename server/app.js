@@ -5,16 +5,10 @@ const io = require("socket.io")(server);
 
 app.use(express.static("public"));
 
-const messages = [{ user: { "userName": "raul123", "id": 3 }, "text": "Holaaa como estan?" }];
+const messages = [];
 const users = []
 
-
-app.get("/", function (req, res) {
-  res.status(200).send("<h1>Hola mundo!</h1>")
-})
-
 io.on('connection', function (socket) {
-
   socket.on("login", function (user) {
     let onlineUsers = users.length;
     if (users.find(u => u.userName == user.userName) == undefined) {
@@ -24,7 +18,7 @@ io.on('connection', function (socket) {
       onlineUsers = users.length; // if has new values
       console.log(`Now there ${onlineUsers > 1 ? "are" : "is"} ${users.length} online ${onlineUsers > 1 ? "users" : "user"}`);
     }
-    socket.emit("showMessages", { onlineUsers, messages });
+    io.sockets.emit("showMessages", { onlineUsers, messages })
   })
 
   socket.on("logout", function (user) {
@@ -33,6 +27,7 @@ io.on('connection', function (socket) {
     console.log(`>> ${user.userName} left the chat 😢`);
 
     const onlineUsers = users.length;
+    console.log(`There are ${onlineUsers} online users now`);
     io.sockets.emit("showMessages", { onlineUsers, messages })
   })
 

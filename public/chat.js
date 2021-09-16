@@ -17,13 +17,14 @@ function auth(localStorage) {
   return user
 }
 
-function showMessages({onlineUsers, messages}) {
+function showMessages({ onlineUsers, messages }) {
   document.getElementById("onlineUsers").innerText = onlineUsers;
-  document.getElementById("messages").innerHTML = JSON.stringify(messages, null, 4);
+  renderMessages(messages)
 }
 
 function logIn() {
   socket.emit("login", user)
+  document.getElementById("userName").innerText = user.userName;
 }
 
 function logOut() {
@@ -36,9 +37,23 @@ function logOut() {
   }
 }
 
-function sendMessage() {
+function sendMessage(e) {
+  e.preventDefault();
   let message = document.getElementById("message")
-  socket.emit("newMessage", {user, message: message.value});
-  message.value = ""
-  changePlaceholder();
+  if (message.value.trim().length > 0) {
+    socket.emit("newMessage", { user, message: message.value });
+    message.value = ""
+    changePlaceholder();
+  }
+}
+
+function renderMessages(messages) {
+  const chatHistory = document.getElementById("messages");
+  chatHistory.innerHTML = messages.map(m => `
+    <div class="message-box">
+      <span class="user-info${m.user.userName == user.userName ? " own-message" : ""}">${m.user.userName}${m.user.userName == user.userName ? " (Tú)" : ""}</span>
+      <p class="message"><i>${m.text}</i></p>
+    </div>
+  `).join(" ");
+  chatHistory.scrollTop = chatHistory.scrollHeight;
 }

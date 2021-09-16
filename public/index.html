@@ -8,17 +8,39 @@
   <title>Quick chat</title>
 </head>
 <body>
-  <div id="userName" style="display: none;"></div>
   <div id="appInfo">
-    <p>🟢 Usuarios conectados: <span id="onlineUsers">...</span></p>
+    <p>Hola <span id="userName"></span> | 🟢 Usuarios online: <span id="onlineUsers">...</span></p>
   </div>
-  <pre id="messages" style="border: 1px solid black; height: 500px; width: 500px;"></pre>
-  <input type="text" name="message" id="message" autocomplete="off" placeholder="Ingrese su lindo mensaje aqui!" style="width: 300px;">
-  <button onclick="sendMessage()">Enviar 📩</button>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <button onclick="logOut()">Sign out</button>
+  <div id="messages" style="border: 1px solid black; height: 500px; width: 500px; overflow: scroll;"></div>
+  <form onsubmit="sendMessage(event)">
+    <input type="text" name="message" id="message" autocomplete="off" placeholder="Ingrese su lindo mensaje aqui!" style="width: 300px;">
+    <input type="submit" value="Enviar ▶" >
+  </form>
+  <br><br><br><br><br><br><br><br><br><br>
+  <button onclick="logOut()">Cerrar sesión</button>
 
   <script src="placeholders.js"></script>
   <script src="chat.js"></script>
+  <style>
+    div.message-box {
+      background: linear-gradient(#e66465, #9198e5);
+      margin-bottom: 0.3rem;
+      padding: 10px;
+    }
+    span.user-info {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    span#userName {
+      font-weight: bold;
+    }
+    span.own-message {
+      color: white;
+    }
+    p.message {
+      margin-top: 1px;
+      margin-left: 15px;
+    }
+  </style>
 </body>
 </html>
