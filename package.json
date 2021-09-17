@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/app.js",
+  "nodemonConfig": {
+    "ignore": ["public/chat.js"],
+    "delay": 2500
+  },
   "scripts": {
     "start": "nodemon server/app.js"
   },
@@ -11,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "ip": "^1.1.5",
     "nodemon": "^2.0.12",
     "socket.io": "^4.2.0"
   }
