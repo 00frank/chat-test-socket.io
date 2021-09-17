@@ -6,7 +6,7 @@ A very quick-easy made chat made with socket.io
 3. Open any browser on **localhost:2006** and start chatting
 with other browsers! 📱💻
 
-*if you want to use your phone, tablet or any device, take a look at the `config/cfg.js` file*
+*if you want to use your phone, tablet or any device, take a look at the `config/.config` file*
 
 
 ## Made with:
