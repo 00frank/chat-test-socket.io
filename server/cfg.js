@@ -22,7 +22,8 @@ function setPlaceToHost (value) {
 
 module.exports = {
   init: function () {
-    let cfg = fs.readFileSync(__dirname + "/.config").toString().split("\r\n");
+    let path = pathJoiner(__dirname, "..", ".config");
+    let cfg = fs.readFileSync(path).toString().split("\r\n");
     cfg = cfg.filter(l => l[0] !== "*" && l[0] !== undefined && l[0] !== "");
     cfg = cfg.map(c => {
       let property = c.split("=")[0].trim();

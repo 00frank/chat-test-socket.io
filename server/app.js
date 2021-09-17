@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-require("../config/cfg").init();
+require("./cfg").init();
 
 app.use(express.static("public"));
 

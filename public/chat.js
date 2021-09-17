@@ -1,4 +1,4 @@
-const socket = io("ws://192.168.1.5:2006");
+const socket = io("ws://localhost:2006");
 const user = auth(window.localStorage);
 logIn();
 
